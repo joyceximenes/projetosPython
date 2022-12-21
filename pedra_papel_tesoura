@@ -1,0 +1,34 @@
+import random
+
+pontos_usu = 0
+pontos_pc = 0
+opcoes = ["p", "l", "t"]
+while True:
+    usu = input("Digite sua escolha:\nP para pedra\nL para papel\nT para tesoura\n Deseja sair? digite Q\n").lower()
+    # lower executa quem ta antes dele, transforma em minusculo
+    if usu == 'q':
+        break
+
+    if usu not in opcoes:
+        continue
+
+    pc = random.randint(0,2) # 0 = P |   1 = L |  2 = T
+    pc_opcao = opcoes[pc]
+    print("Opção do pc: " + pc_opcao)
+    
+    if usu == pc_opcao:
+        print("Empate!")
+    elif usu == "p" and pc_opcao == "t":
+        print("Voce ganhou!")
+        pontos_pc = pontos_pc + 1
+    elif usu == "l" and pc_opcao == "p":
+        print("Voce ganhou!")
+        pontos_usu = pontos_usu + 1
+    elif usu == "t" and pc_opcao == "l":
+        print("Voce ganhou!")
+        pontos_usu = pontos_usu + 1
+    else:
+        print("Voce foi derrotado")
+        pontos_pc = pontos_pc + 1
+
+print(f"Total de pontos: Usuário:{pontos_usu}\nComputador:{pontos_pc}") 
